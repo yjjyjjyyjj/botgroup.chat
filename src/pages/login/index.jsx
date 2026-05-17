@@ -8,26 +8,9 @@ export default function Login() {
   const isMobile = useIsMobile();
 
   React.useEffect(() => {
-    const isLogin = localStorage.getItem('token');
-    if (isLogin) {
-      window.location.href = '/';
-      return;
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const googleToken = urlParams.get('google_token');
-    const githubToken = urlParams.get('github_token');
-    const linuxdoToken = urlParams.get('linuxdo_token');
-    const errorMsg = urlParams.get('error');
-
-    if (googleToken || githubToken || linuxdoToken) {
-      localStorage.setItem('token', googleToken || githubToken || linuxdoToken);
-      window.history.replaceState({}, '', '/login');
-      window.location.href = '/';
-    } else if (errorMsg) {
-      toast.error(errorMsg);
-      window.history.replaceState({}, '', '/login');
-    }
+   localStorage.setItem('token', 'skip-login-for-dev');
+    window.location.href = '/';
+    return;
   }, []);
 
   const handleGoogleLogin = () => {
