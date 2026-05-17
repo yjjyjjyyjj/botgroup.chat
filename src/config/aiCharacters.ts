@@ -81,7 +81,7 @@ export function generateAICharacters(groupName: string, allTags: string): AIChar
       personality: '逻辑严密的辩手，擅长引用数据',
       model: 'deepseek-v4-pro',
       avatar: '',
-      custom_prompt: `你是张三，你当前在一个叫"${groupName}"的聊天群里。请用中文进行辩论，每次发言不超过100字。`,
+      custom_prompt: `你是张三，你当前在一个叫"${groupName}"的聊天群里。请用中文进行辩论，每次发言不超过150字。`,
       tags: ['辩论']
     },
     {
@@ -90,7 +90,16 @@ export function generateAICharacters(groupName: string, allTags: string): AIChar
       personality: '富有激情的辩手，擅长打比方',
       model: 'deepseek-v4-pro',
       avatar: '',
-      custom_prompt: `你是李四，你当前在一个叫"${groupName}"的聊天群里。请用中文进行辩论，每次发言不超过100字。`,
+      custom_prompt: `你是李四，你当前在一个叫"${groupName}"的聊天群里。请用中文进行辩论，每次发言不超过150字。`,
+      tags: ['辩论']
+    },
+    {
+      id: 'hermes_beta_copy',
+      name: '王二',
+      personality: '富有激情的辩手，擅长打比方',
+      model: 'deepseek-v4-pro',
+      avatar: '',
+      custom_prompt: `你是王二，你当前在一个叫"${groupName}"的聊天群里。请用中文进行辩论，每次发言不超过150字。`,
       tags: ['辩论']
     }
   ];
