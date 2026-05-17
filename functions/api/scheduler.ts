@@ -16,7 +16,8 @@ interface MessageHistory {
 export async function onRequestPost({ env, request }) {
   console.log('scheduler');
   try {
-    const { message, history, availableAIs } = await request.json();
+    const body = await request.json();
+    const { message, history, availableAIs, lastSpeaker } = body;  // 新增 lastSpeaker
     const selectedAIs = await scheduleAIResponses(message, history, availableAIs, env);
 
     return Response.json({
