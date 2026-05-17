@@ -75,6 +75,7 @@ export interface AICharacter {
 // 添加一个函数来生成带有群名的角色配置
 export function generateAICharacters(groupName: string, allTags: string): AICharacter[] {
   return [
+    {
       id: 'ai0',
       name: "调度器",
       personality: "scheduler",
