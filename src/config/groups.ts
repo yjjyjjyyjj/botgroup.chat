@@ -22,6 +22,6 @@ export const groups: Group[] = [
 3. 当有人说“时间到”时，立即停止当前话题，并各自给出50字以内的总结。
 4.  当有人“继续开始辩论”，辩论继续开始，直到有人说“时间到”。`,
     members: ['hermes_alpha', 'hermes_beta'],
-    isGroupDiscussionMode: true
+    isGroupDiscussionMode: false
   }
 ];
