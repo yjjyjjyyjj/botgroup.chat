@@ -78,6 +78,26 @@ async function scheduleAIResponses(
   // 2. 使用AI模型分析消息并匹配标签
   const matchedTags = await analyzeMessageWithAI(message, Array.from(allTags), env, history);
   console.log('matchedTags', matchedTags, allTags);
+  // 🆕 辩论模式：按顺序轮转，每次只让一个人发言
+if (matchedTags.includes("辩论")) {
+  const debateOrder = ['hermes_alpha', 'hermes_beta'];  // 与 aiCharacters.ts 中的 id 严格一致
+  // 从最近的历史中找上一轮发言人
+  const lastMessage = history[history.length - 1];
+  const lastSpeakerName = lastMessage?.name || '';
+
+  // 找到下一位发言人的 id
+  let nextIndex = debateOrder.findIndex(id => {
+    const ai = availableAIs.find(a => a.id === id);
+    return ai?.name === lastSpeakerName;
+  });
+  // 如果没找到（如刚开始），默认从第一个人开始
+  if (nextIndex === -1) {
+    nextIndex = -1; // 下面 +1 后会变成 0
+  }
+  const nextSpeakerId = debateOrder[(nextIndex + 1) % debateOrder.length];
+  console.log(`辩论调度：由 ${nextSpeakerId} 发言`);
+  return [nextSpeakerId];   // 只返回一个，保证轮流发言
+}
   //如果含有"文字游戏"标签，则需要全员参与
   if (matchedTags.includes("文字游戏")) {
     return availableAIs.map(ai => ai.id);
