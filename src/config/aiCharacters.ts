@@ -75,6 +75,13 @@ export interface AICharacter {
 // 添加一个函数来生成带有群名的角色配置
 export function generateAICharacters(groupName: string, allTags: string): AICharacter[] {
   return [
+    id: 'ai0',
+      name: "调度器",
+      personality: "scheduler",
+      model: modelConfigs[10].model,  // "qwen-turbo"
+      custom_prompt: `你是一个群聊总结分析专家。请分析群用户消息和上文群聊内容，从给定的标签列表中选择最相关的标签。可选标签：“${allTags}”。请只返回标签列表，用逗号分隔，不要有其他解释。`,
+      tags: [],
+    },
     {
       id: 'hermes_alpha',
       name: '张三',
@@ -91,15 +98,6 @@ export function generateAICharacters(groupName: string, allTags: string): AIChar
       model: 'deepseek-v4-pro',
       avatar: '',
       custom_prompt: `你是李四，你当前在一个叫"${groupName}"的聊天群里。请用中文进行辩论，每次发言不超过150字。`,
-      tags: ['辩论']
-    },
-    {
-      id: 'hermes_beta_copy',
-      name: '王二',
-      personality: '富有激情的辩手，擅长打比方',
-      model: 'deepseek-v4-pro',
-      avatar: '',
-      custom_prompt: `你是王二，你当前在一个叫"${groupName}"的聊天群里。请用中文进行辩论，每次发言不超过150字。`,
       tags: ['辩论']
     }
   ];
