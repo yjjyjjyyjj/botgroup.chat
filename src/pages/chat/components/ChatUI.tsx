@@ -103,7 +103,7 @@ const ChatUI = () => {
   const isInitialized = useRef(false);
 
   // 辩论相关 ref
-  const MAX_DEBATE_ROUNDS = 6; // 总共辩论轮数（正反方各发言算一轮，即总共6次发言）
+  const MAX_DEBATE_ROUNDS = 50; // 总共辩论轮数（正反方各发言算一轮，即总共6次发言）
   const debateRoundRef = useRef(0);
   const isAutoDebating = useRef(false);
 
